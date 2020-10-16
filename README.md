@@ -12,7 +12,8 @@ This repository contains:
 ### Dependencies
 1) A basic MATLAB installation.
 2) The MeshMonk Toolbox https://github.com/TheWebMonks/meshmonk.
-3) This from the MATLAB file exchange  https://www.mathworks.com/matlabcentral/fileexchange/10056-scattered-data-interpolation-and-approximation-using-radial-base-functions
+3) This from the MATLAB file exchange  https://www.mathworks.com/matlabcentral/fileexchange/10056-scattered-data-interpolation-and-approximation-using-radial-base-functions.
+4) Running a patient assessment requires some crude positioning landmarks be placed on each face. We provide a network for doing this. To run this you will need to have MeVisLab installed (free version is fine). https://www.mevislab.de/download; you may also need to edit your meshes prior to processing. This can be done in meshlab https://www.meshlab.net. this tutorial miht be useful https://www.3printr.com/meshlab-bearbeitung-der-polygon-oberflaechennetze-von-3d-modellen-199419/
 
 ### Facial Assessment Toolbox
 Please see FacialAssessmentToolbox/demo/PatientAssessmentInstructions.docx for detailed instructions on how to assess new patients with the toolbos
