@@ -19,7 +19,7 @@ This repository contains:
 #### Step 1 Landmarking Scans
 Five landmarks need to be roughly positioned on each scan. 
 
-[[https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/Landmarks.png]]
+![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/Landmarks.png)
 
 1. Open the Mevislab network FacialAssessmentToolbox.LandmarkIndicationMeVisLab/IndicateLandmarks_Meshes.mlab.
 2.  Press the 'play' icon on the bubble in the bottom left 'SelectObjFiles'.
