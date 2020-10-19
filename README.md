@@ -17,7 +17,7 @@ This repository contains:
 4) Running a patient assessment requires some crude positioning landmarks be placed on each face. We provide a network for doing this. To run this you will need to have MeVisLab installed (free version is fine). https://www.mevislab.de/download; you may also need to edit your meshes prior to processing. This can be done in meshlab https://www.meshlab.net. this tutorial miht be useful https://www.3printr.com/meshlab-bearbeitung-der-polygon-oberflaechennetze-von-3d-modellen-199419/
 
 ### Facial Assessment With the Facial Assessment Toolbox
-#### Step 1 Landmarking Scans
+#### Part 1 Landmarking Scans
 Five landmarks need to be roughly positioned on each scan. 
 
 ![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/Landmarks.png)
@@ -29,27 +29,37 @@ Five landmarks need to be roughly positioned on each scan.
 5. Indicate five landmarks in order (see above figure; subject's right endocanthion,left endocanthion, pronasale, right chelion, left chelion). These do not have to be precise, this should not take more than a few seconds. 
 6. Press the 'play' icon on 'SaveMarkersAndLoadNext'. This will save the landmarks as a '.xml' file is the folder specified in step 3, and will load the next scan.
 
-#### Step 2 Assessing the patient
+#### Part 2 Assessing the patient
 The script FacialAssessmentToolbox/demo/DemoAssessment.m demonstrates how to perform an assessment in MATLAB.
 
-1.  In the first cell set the paths appropriatels to the locations of the MeshMonk toolbox; the FacialAssessmentToolbox; and an appropriate place where you want to output the results.
+1. Set up the script
+*  In the first cell set the paths appropriatels to the locations of the MeshMonk toolbox; the FacialAssessmentToolbox; and an appropriate place where you want to output the results.
 
-2. In the third cell headed 'PatientInfo' set the path to to the '.obj' image file of the patient and the path to the '.xml' file of the landmarks indicated on the subject.
+* In Cell 3 set the path to to the '.obj' image file of the patient and the path to the '.xml' file of the landmarks indicated on the subject. And specify the patient's sex and age.
 
 ```matlab
+%% Cell 3 Edit Patient Info
+
 % path to patient file
 path2patient = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurvesPatientAssessmenToolbox/demo/demofaces/demoFace.obj';
 % path to patient landmarks
 path2patientLandmarks = '/usr/local/avalok/tmp/hmatth5/Projects/3DGrowthCurves/PatientAssessmenToolbox/demo/demofaces/demoFace.xml';
+
+% specify patient's age and sex
+sex = 'M';
+age = 35;
 ```
 
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```
+2. Process the image with MeshMonk
+This determines the locations of 7160 quasi-landmarks on the facial scan of the image. The accuracy of this process can be checked by assessing whether certain landmark points end up on the correct locations on the face.
+* Run the script up to cell 7 inclusive. Two windows will open. On eshows the locations of some landmarks on the template face. The other shows some landmarks, automatically found by MeshMonk on the face of the patient. The accuracy of these ladnmarks on the patient indicate how well MeshMonk has established the quasi-landmarks, which determines the accuracy of the comparison of the patient to the Growth Curve.
+
+[Image Link]
+
+3. Assess patient
+* Run Cell 8 to produce the facial signature of the patient. 
+* Run Cell 9 to produce the normal equivalent of the patient. As the demo patient has no major facial abnormalities the normla equivalent is essentially the same as the image of the patient.
+
 
 
 
