@@ -2,7 +2,8 @@
 A MATLAB repository to facilitate clinical assessment of normal and dysmorphic facial shape
 Written by Hraold Matthews (harry.matthews@kuleuven.be) and Peter Claes (peter.claes@kuleuven.be).
 
-[Insert illustration]
+![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/3DGrowthCurve.png)
+
 ## Contents
 This repository contains:
 1) Code supporting replication of the analyses in [REF].
