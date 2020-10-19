@@ -67,6 +67,8 @@ This determines the locations of 7160 quasi-landmarks on the facial scan of the 
 ### Manuscript Supporting Code
 ManuscriptSupportingCode/AnalysisScripts contains three scripts, illustrating, on simulated data, how to build 3D growth curves from 3D surface scans that are in dense correspondence. Please see S1 Text of the manuscript for further detials on each step.
 
+This simulated data can be downloaded here: https://drive.google.com/drive/folders/1KzElGVdS-aByku4nVL5Wq2X8Z205M7Ed?usp=sharing
+
 Script 1 and 2 address the tuning of the kernel bandidth
 Scr1_ReconstructionErrorParameterSweep.m - computes reconstruction error for each training observation using different bandwidths
 Scr2_fFtBandwidthTuningInterpolants.m - models how the bandwidth should change as a function of age to maninatin acceptable reconstruction error for each model
