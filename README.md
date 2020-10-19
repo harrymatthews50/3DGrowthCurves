@@ -16,7 +16,19 @@ This repository contains:
 4) Running a patient assessment requires some crude positioning landmarks be placed on each face. We provide a network for doing this. To run this you will need to have MeVisLab installed (free version is fine). https://www.mevislab.de/download; you may also need to edit your meshes prior to processing. This can be done in meshlab https://www.meshlab.net. this tutorial miht be useful https://www.3printr.com/meshlab-bearbeitung-der-polygon-oberflaechennetze-von-3d-modellen-199419/
 
 ### Facial Assessment Toolbox
-Please see FacialAssessmentToolbox/demo/PatientAssessmentInstructions.docx for detailed instructions on how to assess new patients with the toolbos
+#### Step 1 Landmarking Scans
+Five landmarks need to be roughly positioned on each scan. 
+
+[[https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/octocat.png|alt=octocat]]
+
+1. Open the Mevislab network FacialAssessmentToolbox.LandmarkIndicationMeVisLab/IndicateLandmarks_Meshes.mlab.
+2.  Press the 'play' icon on the bubble in the bottom left 'SelectObjFiles'.
+3. In the first dialog box select all the image files that you want to landmark.
+4. In the second dialog box select the folder where ypu want to save 
+
+
+
+
 
 ### Manuscript Supporting Code
 ManuscriptSupportingCode/AnalysisScripts contains three scripts, illustrating, on simulated data, how to build 3D growth curves from 3D surface scans that are in dense correspondence. Please see S1 Text of the manuscript for further detials on each step.
