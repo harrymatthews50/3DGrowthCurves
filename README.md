@@ -35,12 +35,21 @@ The script FacialAssessmentToolbox/demo/DemoAssessment.m demonstrates how to per
 1.  In the first cell set the paths appropriatels to the locations of the MeshMonk toolbox; the FacialAssessmentToolbox; and an appropriate place where you want to output the results.
 
 2. In the third cell headed 'PatientInfo' set the path to to the '.obj' image file of the patient and the path to the '.xml' file of the landmarks indicated on the subject.
-'''matlab
+
+```matlab
 % path to patient file
 path2patient = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurvesPatientAssessmenToolbox/demo/demofaces/demoFace.obj';
 % path to patient landmarks
 path2patientLandmarks = '/usr/local/avalok/tmp/hmatth5/Projects/3DGrowthCurves/PatientAssessmenToolbox/demo/demofaces/demoFace.xml';
-'''
+```
+
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
 
 
 
