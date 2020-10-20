@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<MeVis-XML-Data-v1.0>
+
+  <XMarkerList BaseType="XMarkerList" Version="1">
+    <_ListBase Version="0">
+      <hasPersistance>1</hasPersistance>
+      <currentIndex>4</currentIndex>
+    </_ListBase>
+    <ListSize>5</ListSize>
+    <ListItems>
+      <Item Version="0">
+        <_BaseItem Version="0">
+          <id>1</id>
+        </_BaseItem>
+        <pos>-18.6142425537109 38.5480651855469 12.8030395507812 0 0 0</pos>
+      </Item>
+      <Item Version="0">
+        <_BaseItem Version="0">
+          <id>2</id>
+        </_BaseItem>
+        <pos>18.2279167175293 38.4862747192383 12.80419921875 0 0 0</pos>
+      </Item>
+      <Item Version="0">
+        <_BaseItem Version="0">
+          <id>3</id>
+        </_BaseItem>
+        <pos>-0.686531066894531 13.2831573486328 53.8069458007812 0 0 0</pos>
+      </Item>
+      <Item Version="0">
+        <_BaseItem Version="0">
+          <id>4</id>
+        </_BaseItem>
+        <pos>-22.2356872558594 -18.9508590698242 36.1988525390625 0 0 0</pos>
+      </Item>
+      <Item Version="0">
+        <_BaseItem Version="0">
+          <id>5</id>
+        </_BaseItem>
+        <pos>20.8113174438477 -17.253303527832 37.8517150878906 0 0 0</pos>
+      </Item>
+    </ListItems>
+  </XMarkerList>
+
+</MeVis-XML-Data-v1.0>

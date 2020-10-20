@@ -1,0 +1,721 @@
+// MDL v1 utf8
+mevislabVersion = 3.1.1
+network  {
+  watchlist = ""
+}
+module RunPythonScript {
+  internal  {
+    frame = "557 -435 216 72"
+    moduleGroupName = IndicateLandmarks
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "649 1047 644 304"
+        sizeHint = "644 304"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SaveMarkersAndLoadNext
+    in0 = ""
+    in1 = ""
+    in2 = ""
+    in3 = ""
+    in4 = ""
+    in5 = ""
+    in6 = ""
+    in7 = ""
+    in8 = ""
+    in9 = ""
+    inComment0 = in0
+    inComment1 = in1
+    inComment2 = in2
+    inComment3 = in3
+    inComment4 = in4
+    inComment5 = in5
+    inComment6 = in6
+    inComment7 = in7
+    inComment8 = in8
+    inComment9 = in9
+    autoApply0 = TRUE
+    autoApply1 = TRUE
+    autoApply2 = TRUE
+    autoApply3 = TRUE
+    autoApply4 = TRUE
+    autoApply5 = TRUE
+    autoApply6 = TRUE
+    autoApply7 = TRUE
+    autoApply8 = TRUE
+    autoApply9 = TRUE
+    out0 = ""
+    out1 = ""
+    out2 = ""
+    out3 = ""
+    out4 = ""
+    out5 = ""
+    out6 = ""
+    out7 = ""
+    out8 = ""
+    out9 = ""
+    outComment0 = out0
+    outComment1 = out1
+    outComment2 = out2
+    outComment3 = out3
+    outComment4 = out4
+    outComment5 = out5
+    outComment6 = out6
+    outComment7 = out7
+    outComment8 = out8
+    outComment9 = out9
+    initCode = "# For backward compatibility, set up CTX as alias for ctx
+CTX = ctx # ctx is the network's context, not RunPythonScript's"
+    wakeUpCode = ""
+    code = "*ctx.field("SaveMarkers.save").touch()
+ctx.field("So3DMarkerEditor1.deleteAll").touch()
+i = ctx.field("StringListContainer.index").value
+ctx.field("StringListContainer.index").value = i+1
+ctx.field("WEMLoad.filename").value = ctx.field("StringListContainer.name").value*"
+    finalizeCode = ""
+    showFields = FALSE
+    showInitCode = FALSE
+    showWakeUpCode = FALSE
+    showCode = TRUE
+    showFinalizeCode = FALSE
+    showConsole = FALSE
+  }
+}
+module RunPythonScript {
+  internal  {
+    frame = "441 -19 160 56"
+    moduleGroupName = IndicateLandmarks
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "1672 307 644 798"
+        sizeHint = "644 551"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SelectObjFiles
+    in0 = ""
+    in1 = ""
+    in2 = ""
+    in3 = ""
+    in4 = ""
+    in5 = ""
+    in6 = ""
+    in7 = ""
+    in8 = ""
+    in9 = ""
+    inComment0 = in0
+    inComment1 = in1
+    inComment2 = in2
+    inComment3 = in3
+    inComment4 = in4
+    inComment5 = in5
+    inComment6 = in6
+    inComment7 = in7
+    inComment8 = in8
+    inComment9 = in9
+    autoApply0 = TRUE
+    autoApply1 = TRUE
+    autoApply2 = TRUE
+    autoApply3 = TRUE
+    autoApply4 = TRUE
+    autoApply5 = TRUE
+    autoApply6 = TRUE
+    autoApply7 = TRUE
+    autoApply8 = TRUE
+    autoApply9 = TRUE
+    out0 = ""
+    out1 = ""
+    out2 = ""
+    out3 = ""
+    out4 = ""
+    out5 = ""
+    out6 = ""
+    out7 = ""
+    out8 = ""
+    out9 = ""
+    outComment0 = out0
+    outComment1 = out1
+    outComment2 = out2
+    outComment3 = out3
+    outComment4 = out4
+    outComment5 = out5
+    outComment6 = out6
+    outComment7 = out7
+    outComment8 = out8
+    outComment9 = out9
+    initCode = "from mevis import MLABFileDialog
+# For backward compatibility, set up CTX as alias for ctx
+CTX = ctx # ctx is the network's context, not RunPythonScript's"
+    wakeUpCode = ""
+    code = "*filelist = MLABFileDialog.getOpenFileNames("(*.obj *.stl)", ctx.localPath(), "Select multiple files")
+ctx.field("StringListContainer.deleteAll").touch()
+for i in range(len(filelist)):
+	ctx.field("StringListContainer.newName").value = str(filelist[i])
+	ctx.field("StringListContainer.add").touch()
+ctx.field("StringListContainer.index").value=0;
+ctx.field("WEMLoad.filename").value = ctx.field("StringListContainer.name").value
+path = MLABFileDialog.getExistingDirectory(ctx.localPath(),'Where do you want to save the markers')
+ctx.field("SaveMarkers.baseDir").value = path
+*"
+    finalizeCode = ""
+    showFields = FALSE
+    showInitCode = TRUE
+    showWakeUpCode = FALSE
+    showCode = TRUE
+    showFinalizeCode = FALSE
+    showConsole = TRUE
+  }
+}
+module StringListContainer {
+  internal  {
+    frame = "649 -19 144 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "1653 867 470 394"
+        sizeHint = "470 394"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "1692 730 500 600"
+        sizeHint = "262 217"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StringListContainer
+    listString = ""
+    index = 0
+    persistent = FALSE
+    listStringEnable = TRUE
+    applySelect = FALSE
+    name = /usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves2/FacialAssessmenToolbox/demo/demofaces/demoFace.obj
+    newName = /usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves2/FacialAssessmenToolbox/demo/demofaces/demoFace.obj
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = TRUE
+  }
+}
+module StringSplit {
+  internal  {
+    frame = "1840 -380 96 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "467 672 500 752"
+        sizeHint = "500 752"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StringSplit1
+    inString = demofaces
+    separators = .
+    trimWhitespace = TRUE
+    selectedSubStringIndex = 0
+    searchSubstring = ""
+    searchIgnoreCase = FALSE
+  }
+}
+module StringSplit {
+  internal  {
+    frame = "1824 -156 96 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "1029 365 500 752"
+        sizeHint = "500 752"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StringSplit
+    inString = /usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves2/FacialAssessmenToolbox/demo/demofaces/demoFace.obj
+    separators = /
+    trimWhitespace = TRUE
+    selectedSubStringIndex = 0
+    searchSubstring = ""
+    searchIgnoreCase = FALSE
+  }
+}
+module WEMLoad {
+  internal  {
+    frame = "1438 -54 96 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "1835 994 351 384"
+        sizeHint = "351 384"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "1590 651 500 600"
+        sizeHint = "262 217"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = WEMLoad
+    id = 0
+    autoApply = TRUE
+    updateMode = AutoUpdate
+    overwriteLabelDescription = TRUE
+    label = ""
+    description = ""
+    shouldComputeNormals = FALSE
+    filename = /usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves2/FacialAssessmenToolbox/demo/demofaces/demoFace.obj
+    mirrorFaces = FALSE
+    generateEdges = TRUE
+    triangulateFaces = FALSE
+    triangulationMode = Strip
+  }
+}
+module XMarkerListContainer {
+  internal  {
+    frame = "1406 -598 160 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "1753 694 505 518"
+        sizeHint = "493 518"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = XMarkerListContainer
+    listString = ""
+    index = 0
+    persistent = FALSE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "-6.05479574203491 58.8966102600098 77.0030212402344"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module SaveBase {
+  internal  {
+    frame = "1430 -894 112 72"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "1243 823 550 239"
+        sizeHint = "550 239"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "1803 341 500 600"
+        sizeHint = "262 217"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SaveMarkers
+    nodeName = XMarkerList
+    filename = demofaces
+    useBaseDir = TRUE
+    baseDir = /usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves2/FacialAssessmenToolbox/demo/demofaces
+    format = XML
+    autoSave = FALSE
+    allowOverwrite = TRUE
+  }
+}
+module LoadBase {
+  internal  {
+    frame = "1253 -203 136 72"
+    moduleGroupName = IndicateLandmarks
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "1317 690 500 204"
+        sizeHint = "487 204"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = LoadMarkers
+    autoUpdate = AutoClear
+    nodeName = ""
+    filename = /Users/hmatth5/Desktop/SaveMarkers_Nele.xml
+    useBaseDir = FALSE
+    baseDir = ""
+    format = Auto
+  }
+}
+module So3DMarkerEditor {
+  internal  {
+    frame = "1174 -334 144 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "193 866 554 325"
+        sizeHint = "554 325"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = So3DMarkerEditor1
+    interactionProviderID = ""
+    scaleSize = 4
+    scaleLength = 1
+    color = "1 1 1"
+    ambientColor = "0 0 0"
+    specularColor = "0.300000011920929 0.300000011920929 0.300000011920929"
+    enableVector = FALSE
+    drawingOn = TRUE
+    editingOn = TRUE
+    selectingOn = TRUE
+    deleteOnClick = TRUE
+    addOnClick = TRUE
+    edit3DOn = TRUE
+    edit3DVector = FALSE
+    useManagedInteraction = FALSE
+    performPreHitTest = FALSE
+    cursorShape = UNDEFINED_CURSOR
+    colorMode = COLOR_BY_INDEX
+    markerType = 0
+    textColorMode = COLOR_TEXT
+    textMode = TEXT_MARKERLISTINDEX
+    textColor = "0.983529984951019 1 0.943437993526459"
+    textShadow = TRUE
+    textBackgroundColor = "0.5 0.5 0.5"
+    textBackgroundAlpha = 0.30000001
+    textFontType = SoExtText2::HELVETICA_10
+    vectorArrow = VECTOR_BOTH_ARROWS
+    lineStyle = Solid
+    drawMode = DrawModeGeometry
+    geometryComplexity = LOW
+    numMarkersThresholdForFastRendering = 5000
+    listString = ""
+    index = 4
+    persistent = FALSE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "41.3227577209473 -13.2444725036621 91.2157592773438"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module StylePalette {
+  internal  {
+    frame = "1134 -190 112 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _default {
+        geometry = "944 408 710 536"
+        sizeHint = "700 536"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = StylePalette1
+    color1 = "0.035092 1 0.037529"
+    color2 = "1 0 0"
+    color3 = "0 0 1"
+    color4 = "0 1 0"
+    color5 = "1 0.5 0"
+    color6 = "1 0 1"
+    color7 = "0 1 1"
+    color8 = "0.5 1 0.5"
+    color9 = "1 0 0.5"
+    color10 = "0.5 1 0"
+    color11 = "0.5 0 1"
+    color12 = "0 1 0.5"
+    lineStyle1 = Solid
+    lineStyle2 = Solid
+    lineStyle3 = Solid
+    lineStyle4 = Solid
+    lineStyle5 = Solid
+    lineStyle6 = Solid
+    lineStyle7 = Solid
+    lineStyle8 = Solid
+    lineStyle9 = Solid
+    lineStyle10 = Solid
+    lineStyle11 = Solid
+    lineStyle12 = Solid
+    lineWidth1 = 1
+    lineWidth2 = 1
+    lineWidth3 = 1
+    lineWidth4 = 1
+    lineWidth5 = 1
+    lineWidth6 = 1
+    lineWidth7 = 1
+    lineWidth8 = 1
+    lineWidth9 = 1
+    lineWidth10 = 1
+    lineWidth11 = 1
+    lineWidth12 = 1
+    markerType1 = Circle
+    markerType2 = Circle
+    markerType3 = Circle
+    markerType4 = Circle
+    markerType5 = Circle
+    markerType6 = Circle
+    markerType7 = Circle
+    markerType8 = Circle
+    markerType9 = Circle
+    markerType10 = Circle
+    markerType11 = Circle
+    markerType12 = Circle
+    markerSize1 = 10
+    markerSize2 = 10
+    markerSize3 = 10
+    markerSize4 = 10
+    markerSize5 = 10
+    markerSize6 = 5
+    markerSize7 = 5
+    markerSize8 = 5
+    markerSize9 = 5
+    markerSize10 = 5
+    markerSize11 = 5
+    markerSize12 = 5
+    antiAlias1 = FALSE
+    antiAlias2 = FALSE
+    antiAlias3 = FALSE
+    antiAlias4 = FALSE
+    antiAlias5 = FALSE
+    antiAlias6 = FALSE
+    antiAlias7 = FALSE
+    antiAlias8 = FALSE
+    antiAlias9 = FALSE
+    antiAlias10 = FALSE
+    antiAlias11 = FALSE
+    antiAlias12 = FALSE
+    name1 = ""
+    name2 = ""
+    name3 = ""
+    name4 = ""
+    name5 = ""
+    name6 = ""
+    name7 = ""
+    name8 = ""
+    name9 = ""
+    name10 = ""
+    name11 = ""
+    name12 = ""
+    currentStyle = 0
+    currentColor = "1 1 1"
+    currentLineStyle = None
+    currentLineWidth = 1
+    currentMarkerType = None
+    currentMarkerSize = 4
+    currentAntiAlias = FALSE
+    currentName = ""
+    reservedEntries = 0
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "1078 -902 144 56"
+    moduleGroupName = IndicateLandmarks
+    windows  {
+      window _viewer {
+        geometry = "1565 319 1266 598"
+        sizeHint = "400 400"
+        wasOpen = yes
+      }
+      window _default {
+        geometry = "92 146 511 367"
+        sizeHint = "511 367"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer1
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0 0 0"
+    transparency = DELAYED_BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = FALSE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539819
+    position = "0 0 455.730682373047"
+    orientation = "0 0 1 0"
+    nearDistance = 331.58762
+    farDistance = 567.20013
+    focalDistance = 455.73068
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = FALSE
+    wheelRotationEnabled = FALSE
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "1425 -262 136 56"
+    moduleGroupName = IndicateLandmarks
+  }
+  fields  {
+    instanceName = SoWEMRenderer1
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = FALSE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = TRUE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 1
+    faceShininessValue = 1
+    primitiveValueLists = LUT,textureS,textureT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    selectedTab = 0
+  }
+}
+module SoBackground {
+  internal  {
+    frame = "1080 -557 120 56"
+    moduleGroupName = IndicateLandmarks
+  }
+  fields  {
+    instanceName = SoBackground1
+    rotate = TRUE
+    flip = FALSE
+    on = TRUE
+    depthBuffer = TRUE
+  }
+}
+connections  {
+  StringSplit1.inString = StringSplit.lastSubString
+  StringSplit.inString = WEMLoad.filename
+  XMarkerListContainer.inXMarkerList = So3DMarkerEditor1.outXMarkerList
+  SaveMarkers.inObject = XMarkerListContainer.outXMarkerList
+  SaveMarkers.filename = StringSplit1.subString0
+  So3DMarkerEditor1.stylePalette = StylePalette1.outStylePalette
+  So3DMarkerEditor1.inputNode = SoWEMRenderer1.self
+  So3DMarkerEditor1.inXMarkerList = LoadMarkers.outObject
+  SoExaminerViewer1.children = "SoWEMRenderer1.self SoBackground1.self So3DMarkerEditor1.self"
+  SoWEMRenderer1.inWEM = WEMLoad.outWEM
+}
+networkModel  {
+  parentItems  {
+    0  {
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 58
+        objectName = IndicateLandmarks
+        parentUniqueId = 0
+        color  {
+          r = 45
+          g = 226
+          b = 226
+          a = 40
+        }
+      }
+    }
+  }
+}
