@@ -1,6 +1,6 @@
 # 3DGrowthCurves
 A MATLAB repository to facilitate clinical assessment of normal and dysmorphic facial shape
-Written by Hraold Matthews (harry.matthews@kuleuven.be) and Peter Claes (peter.claes@kuleuven.be).
+Written by Harold Matthews (harry.matthews@kuleuven.be) and Peter Claes (peter.claes@kuleuven.be).
 
 ![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/3DGrowthCurves.png)
 
