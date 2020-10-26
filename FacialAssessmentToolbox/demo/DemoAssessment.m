@@ -1,6 +1,6 @@
 
 %% Cell 1 SET PATHS
-clear all; close all;
+clear all; close all; restoredefaultpath
 
 
 % add path to 'meshmonk' toolbox on your machine
@@ -8,15 +8,15 @@ path2meshmonk = '/Users/hmatth5/Documents/meshmonk';
 addpath(genpath(path2meshmonk));
 
 % add path to facial assessment toolbox on your machine
-path2FAT = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmenToolbox/';
+path2FAT = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmentToolbox/';
 addpath(genpath(path2FAT));
 
 
 % save output path
-saveOutputPath = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmenToolbox/demo';
+saveOutputPath = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmentToolbox/demo';
 
 
-%% Cell 2 Load Growth Curves
+%% Cell 2 Detect Growth Curves
 
 
 % determine for which ages models are available
@@ -46,9 +46,9 @@ femaleAges = arrayfun(@(x) str2num(x{1}{1}),femaleAges);
 %% Cell 3 Edit Patient Info
 
 % path to patient file
-path2patient = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurvesPatientAssessmenToolbox/demo/demofaces/demoFace.obj';
+path2patient = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmentToolbox/demo/demofaces/demoFace.obj';
 % path to patient landmarks
-path2patientLandmarks = '/usr/local/avalok/tmp/hmatth5/Projects/3DGrowthCurves/PatientAssessmenToolbox/demo/demofaces/demoFace.xml';
+path2patientLandmarks = '/usr/local/avalok/tmp/hmatth5/Chapter5/Submission1/3DGrowthCurves/FacialAssessmentToolbox/demo/demofaces/demoFace.xml';
 
 % specify patient's age and sex
 sex = 'M';
@@ -56,12 +56,12 @@ age = 35;
 
 
 
-assert(exist(path2patient,'file')==2),'unable to find patient image file, verify the file exists and that the path is correct');
+assert(exist(path2patient,'file')==2,'unable to find patient image file, verify the file exists and that the path is correct');
 [~,fn,ext] =  fileparts(path2patient);
 
 assert(strcmp(ext,'.obj'),'file should be in .obj format, you should be able to convert the format either in the software provided by your camera manufacturers or the free software MeshLab')
 
-assert(exist(path2patientLandmarks,'file')==2),'unable to find patient landmark file, verify the file exists and the path is correct');
+assert(exist(path2patientLandmarks,'file')==2,'unable to find patient landmark file, verify the file exists and the path is correct');
 
 assert(ismember(sex,{'M','F'}), 'Specify sex of patient as either ''M'' or ''F'''); 
 switch sex
@@ -219,7 +219,7 @@ NRM.map();
 
 mappedPatient = NRM.FloatingShape;
 
-% export mapped file to .obj
+% export mapped image to .obj
 mappedPatient.exportWavefront([fn,'_mapped.obj'],saveOutputPath);
 
 %% Cell 7 Inspect correspondences
@@ -284,7 +284,7 @@ facialSignature = computeFacialSignature(M,mappedPatient);
 cLim = [-3,3]; % set limits of color-scale
 
 
-Zvalues= facialSignature.(fld);
+Zvalues= facialSignature.(direction);
 shp = clone(Template);
 shp.ViewMode = 'Solid';
 shp.Material = 'Dull';
@@ -318,6 +318,7 @@ NEObj.fit();
 
 % view original and normal equivalent
 v1 = setUpViewer(NEObj.TargetMesh);
+v1.Figure.Position(1) = 50;
 NEObj.TargetMesh.ViewMode = 'Solid';
 NEObj.TargetMesh.Material = 'Dull';
 NEObj.TargetMesh.SingleColor= [.8,.8,.8];
@@ -328,6 +329,28 @@ NEObj.NormalEquivalentMesh.Material = 'Dull';
 NEObj.NormalEquivalentMesh.SingleColor= [.8,.8,.8];
 v2.Tag = 'Normal Equivalent';
 v2.Figure.Position(1) = v1.Figure.Position(1)+v1.Figure.Position(3);
+
+cMapObj = clone(mappedPatient);
+cMapObj.ViewMode = 'Solid';
+v3 = setUpViewer(cMapObj);
+v3.Figure.Position(1) = v2.Figure.Position(1)+v2.Figure.Position(3);
+
+v3.Tag = 'NormalEquivalentDifference (mm)';
+diffs = NEObj.NormalEquivalentMesh.Vertices-mappedPatient.Vertices;
+%project on surface normals
+nProj = sum(diffs.*mappedPatient.VertexNormals,2);
+
+cMapObj.VertexValue = nProj;
+cMapObj.ColorMode = 'Indexed';
+cMapObj.Material = 'dull';
+
+% set appropriate color-scale limits
+cLim = [-5,5]; % mm units
+caxis(v3.Figure.CurrentAxes,cLim);
+
+colormap(seismicColormap());
+colorbar();
+
 
 % export normal equivalent to obj
 mappedPatient.exportWavefront([fn,'_normalEquivalent.obj'],saveOutputPath);
