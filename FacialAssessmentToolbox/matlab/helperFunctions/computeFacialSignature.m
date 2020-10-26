@@ -20,7 +20,7 @@ diffs = shp.Vertices-model.Average.Vertices;
 
 % compute projections on normals
 normals = model.Average.VertexNormals;
-nProj = sum(diffs.*normals,1);
+nProj = sum(diffs.*normals,2);
 
 % calculate z scores
 Z = struct;
