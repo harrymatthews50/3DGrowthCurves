@@ -58,7 +58,7 @@ classdef NormalEquivalent < superHandleClass
         Display = false;
         Kappa = 2;
     end
-    properties (SetAccess=private) % algorithm outputs
+    properties  % algorithm outputs
         NormalEquivalentMesh = []; 
         Weights = [];
         Iteration = [];
