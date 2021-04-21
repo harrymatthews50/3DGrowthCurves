@@ -9,7 +9,11 @@ if numel(sz)>2
 end
 inCell = inCell(:);
 emptyInds = cellfun(@isempty,inCell);
-values = getElementsFromResidualsStruct([inCell{~emptyInds}]',method,value,field);
+%unpack not empty values into struct  array
+valid = [inCell{~emptyInds}];
+valid = cat(1,valid{:});
+% extract the requested values
+values = getElementsFromResidualsStruct(valid,method,value,field);
 
 % set up output array
 szValues = size(values);
@@ -25,6 +29,4 @@ for i = 1:numel(notEmptyInds)
 end
     
 end
-
-
 
