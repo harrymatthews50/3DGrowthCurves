@@ -7,11 +7,12 @@ sz =size(inCell);
 if numel(sz)>2
     error('bahaviour not checked for nDims >2')
 end
-inCell = inCell(:);
+inCell =inCell(:);
 emptyInds = cellfun(@isempty,inCell);
+
 %unpack not empty values into struct  array
 valid = [inCell{~emptyInds}];
-valid = cat(1,valid{:});
+
 % extract the requested values
 values = getElementsFromResidualsStruct(valid,method,value,field);
 
