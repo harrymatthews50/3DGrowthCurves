@@ -205,7 +205,7 @@ end
 
 
 function out = residualizeDist2Expected(expected,shape,RRT,expectedModelDevs)
-   RRT.Weights = [];
+  % RRT.Weights = [];
   % RRT.UseModelExpectedDevs = true;
    RRT.ModelRMSDevs = expectedModelDevs;
    RRT.FloatingMesh = clone(shape);
