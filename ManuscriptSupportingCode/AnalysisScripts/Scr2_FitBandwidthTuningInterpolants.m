@@ -98,6 +98,7 @@ end
 f = figure;
 threshold = 1.; % set acceptable average generalization error (mm), in the manuscript we set this to .6 but is set higher here because the simulated data don't give generalsation errors that low
 
+
 for s = 1:2 % for each sex
     
     %%%%%%%%%%%%%% plot scattered data and surface fitted to scattered data
@@ -176,25 +177,28 @@ for s = 1:2 % for each sex
     % sort by ascending age
     [~,I] = sort(xy(1,:),'ascend');
     xy = xy(:,I);
-   % keyboard
     % create interpolant predicting bandwidth from age
+     evalAges = linspace(min(ages(sex==s)),max(ages(sex==s)),100);
+     
     interA = griddedInterpolant(xy(1,:),xy(2,:));
+    
+    % which points can't be evaluated
+    interA.ExtrapolationMethod = 'none';
+    inEvaluable = isnan(interA(evalAges));
+   
+    %use nearest neighbour interpolation to estimate them
     interA.ExtrapolationMethod = 'nearest';
-    
-    
-    
-    
-    
-    % use this to interpolate any missing sections of the contour
-    evalAges = linspace(min(ages(sex==s)),max(ages(sex==s)),100);
-    interpBW = inter(evalAges);
+    interpBW = interA(evalAges);
     
     % create final interpolant including missing contour sections
-    inter = griddedInterpolant(evalAges,interpBW);
-    
+    % but exclude the interpolated sections that are interpolated to be the
+    % maximum bandwidth (i.e. we just did not test a large enough bandwidth)
+    mask = ~(interpBW==max(testBWs) & inEvaluable);
+    inter = griddedInterpolant(evalAges(mask),interpBW(mask));
+
     % plot bandwidth in function of age as modelled in the interpolant
 
-    pl = plot(evalAges,interpBW,'r','LineWidth',3);
+    pl = plot(evalAges(mask),interpBW(mask),'r','LineWidth',3);
     legend(pl,num2str(threshold),'Location','NorthWest')
     hold off
     
