@@ -1,4 +1,4 @@
-function [out] = batchResidualiseNonlinearLOO(growthCurve3DObj,landmarks,methods,normalEquivalent,RRT,returnCasesMask)
+function [out,success,message] = batchResidualiseNonlinearLOO(growthCurve3DObj,landmarks,methods,normalEquivalent,RRT,returnCasesMask)
     % in batch residualises the shapes in landmarks against an age and sex appropriate model, as produced by the growth curve 3d
     % this assumes that the shapes in landmarks are the same individuals as
     % as for the growthCurve3D training data.  Each case is left out of the
@@ -45,7 +45,8 @@ function [out] = batchResidualiseNonlinearLOO(growthCurve3DObj,landmarks,methods
     nAllCases = numel(growthCurve3DObj.Age);
     nCasesToReturn = size(landmarks,3);
     tmpResults = cell(1,nCasesToReturn);
-  
+    tmpSuccess = cell(1,nCasesToReturn);
+    tmpMessage = cell(1,nCasesToReturn);
     returnCasesInds = find(returnCasesMask);
     parfor n = 1:nCasesToReturn
         
@@ -56,9 +57,11 @@ function [out] = batchResidualiseNonlinearLOO(growthCurve3DObj,landmarks,methods
         shp = landmarks(:,:,n,:);
         age = forGrowthCurve3DObj.Age(returnCasesInds(n));
         sex = forGrowthCurve3DObj.Sex(returnCasesInds(n));
-        tmpResults{n} = batchResidualiseNonlinear(shp,age,sex,forGrowthCurve3DObj,methods,normalEquivalent,RRT,false);
+        [tmpResults{n},tmpSuccess{n},tmpMessage{n}] = batchResidualiseNonlinear(shp,age,sex,forGrowthCurve3DObj,methods,normalEquivalent,RRT,false);
 
     end
     out = vertcat(tmpResults{:});
+    success = vertcat(tmpSuccess{:});
+    message = vertcat(tmpMessage{:});
 end
 
