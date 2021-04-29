@@ -176,7 +176,7 @@ end
 
 
 function out = residualizeFacialSignature(shape,model,RRT)
-    RRT.Weights = [];
+ %   RRT.Weights = [];
    % RRT.ModelRMSDevs = model.PointStandardDevs(:,5);
     RRT.FloatingMesh = clone(shape);
     RRT.TargetMesh = clone(model.Average);
