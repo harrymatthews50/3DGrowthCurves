@@ -271,7 +271,7 @@ classdef NormalEquivalent < superHandleClass
             
             % calculate regularized, weighted projections onto the modes of
             % the morphable model
-            obj.PCTransformation = obj.MorphableModel.projectIntoSpace(inVertices,obj.Weights);
+            obj.PCTransformation = obj.MorphableModel.projectIntoSpace(inVertices,obj.Weights');
         end
         
         function updateNormalEquivalentMesh(obj)

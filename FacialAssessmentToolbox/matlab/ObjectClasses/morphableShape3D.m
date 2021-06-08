@@ -427,7 +427,7 @@ classdef morphableShape3D < superHandleClass
 
             if nargin<3, w = ones(1,size(inVEC,2));end
             % converting input to Vector representation
-
+            assert(size(w,2)==size(in,1),'Weights are the wrong shape') 
             inVEC = double(inVEC(:));
             inVEC = inVEC-obj.AverageVEC;
             wVEC = repmat(w,3,1);
