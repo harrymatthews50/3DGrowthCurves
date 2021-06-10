@@ -1,13 +1,18 @@
 # 3DGrowthCurves
 A MATLAB repository to facilitate clinical assessment of normal and dysmorphic facial shape
-Written by Harold Matthews (harry.matthews@kuleuven.be) and Peter Claes (peter.claes@kuleuven.be).
+Written by Harold Matthews (harry.matthews@kuleuven.be) and Peter Claes (peter.claes@kuleuven.be). If you find the toolbox useful please acknowledge and cite 
+us:
+
+Matthews, H.S., Palmer, R.L., Baynam, G.S. et al. Large-scale open-source three-dimensional growth curves for clinical facial assessment and objective description of facial dysmorphism. Sci Rep 11, 12175 (2021). https://doi.org/10.1038/s41598-021-91465-z
 
 ![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/3DGrowthCurves.png)
 
 ## Contents
 This repository contains:
-1) Code supporting replication of the analyses in [REF].
-2) The Facial Assessment Toolbox, for assessing normal and abnormal facial shape.
+1) Code supporting replication of the analyses in:
+Matthews, H.S., Palmer, R.L., Baynam, G.S. et al. Large-scale open-source three-dimensional growth curves for clinical facial assessment and objective description of facial dysmorphism. Sci Rep 11, 12175 (2021). https://doi.org/10.1038/s41598-021-91465-z
+
+4) The Facial Assessment Toolbox, for assessing normal and abnormal facial shape.
 
 ## Dependencies
 1) A basic MATLAB installation.
