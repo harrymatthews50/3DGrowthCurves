@@ -294,7 +294,7 @@ classdef morphableShape3D < superHandleClass
             % PC
             
             %compute weighted SS (if no weights have been specified this is the num of squares)
-            wSS = sum((obj.Projections.*weights).^2,1);
+            wSS = sum((obj.Projections.^2.*weights),1);
             eV = wSS./normaliseVariationFactor;
 
             
@@ -319,8 +319,7 @@ classdef morphableShape3D < superHandleClass
                vals = displacements{d}; 
                if ~isempty(vals)
                     % calculate weighted SS for each point
-                     wVals = vals.*weights';
-                     wSS = sum(wVals.^2,2);
+                     wSS = sum(vals.^2*weights,2);
                      pointStandardDevs(:,d) = sqrt(wSS./normaliseVariationFactor);
 
                end
