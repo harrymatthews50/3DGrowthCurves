@@ -319,7 +319,7 @@ classdef morphableShape3D < superHandleClass
                vals = displacements{d}; 
                if ~isempty(vals)
                     % calculate weighted SS for each point
-                     wSS = sum(vals.^2*weights,2);
+                     wSS = sum(vals.^2.*weights',2);
                      pointStandardDevs(:,d) = sqrt(wSS./normaliseVariationFactor);
 
                end
