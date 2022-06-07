@@ -7,6 +7,9 @@ Matthews, H.S., Palmer, R.L., Baynam, G.S. et al. Large-scale open-source three-
 
 ![alt text](https://github.com/harrymatthews50/3DGrowthCurves/blob/master/img/3DGrowthCurves.png)
 
+The functionality of this toolbox is now available in the 3D MedX software produced by the 3D Lab of Radboudmc, Nijmegen (https://www.3dmedx.nl)
+
+
 ## Contents
 This repository contains:
 1) Code supporting replication of the analyses in:
