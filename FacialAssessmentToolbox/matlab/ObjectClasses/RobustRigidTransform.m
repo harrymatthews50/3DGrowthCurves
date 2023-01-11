@@ -61,7 +61,7 @@ properties % user settings
         ModelRMSDevs;
         UseModelExpectedDevs = false;
 end
-properties (SetAccess=private) % algorithm output
+properties  % algorithm output
     RigidTransformation = []
     Weights = []; 
 end
